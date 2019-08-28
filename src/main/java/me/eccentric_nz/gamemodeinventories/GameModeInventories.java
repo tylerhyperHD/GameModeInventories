@@ -134,7 +134,8 @@ public class GameModeInventories extends JavaPlugin {
     /**
      * Sets up the database.
      */
-    private void loadDatabase() {
+    @SuppressWarnings("unused")
+	private void loadDatabase() {
         String dbtype = getConfig().getString("storage.database");
         try {
             if (dbtype.equals("sqlite")) {

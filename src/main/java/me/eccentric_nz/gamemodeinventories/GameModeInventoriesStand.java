@@ -23,7 +23,8 @@ public class GameModeInventoriesStand {
         this.plugin = plugin;
     }
 
-    public void loadStands() {
+    @SuppressWarnings("resource")
+	public void loadStands() {
         PreparedStatement statement = null;
         ResultSet rs = null;
         if (plugin.getConfig().getBoolean("track_creative_place.enabled")) {

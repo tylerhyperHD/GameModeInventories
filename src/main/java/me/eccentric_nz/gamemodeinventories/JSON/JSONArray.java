@@ -75,12 +75,13 @@ import java.util.Map;
  * @author JSON.org
  * @version 2013-04-18
  */
+@SuppressWarnings("rawtypes")
 public class JSONArray {
 
     /**
      * The arrayList where the JSONArray's properties are kept.
      */
-    private final ArrayList myArrayList;
+	private final ArrayList myArrayList;
 
     /**
      * Construct an empty JSONArray.
@@ -95,7 +96,8 @@ public class JSONArray {
      * @param x A JSONTokener
      * @throws JSONException If there is a syntax error.
      */
-    public JSONArray(JSONTokener x) throws JSONException {
+    @SuppressWarnings("unchecked")
+	public JSONArray(JSONTokener x) throws JSONException {
         this();
         if (x.nextClean() != '[') {
             throw x.syntaxError("A JSONArray text must start with '['");
@@ -142,7 +144,8 @@ public class JSONArray {
      *
      * @param collection A Collection.
      */
-    public JSONArray(Collection collection) {
+    @SuppressWarnings("unchecked")
+	public JSONArray(Collection collection) {
         this.myArrayList = new ArrayList();
         if (collection != null) {
             Iterator iter = collection.iterator();
@@ -602,7 +605,8 @@ public class JSONArray {
      *              String, or the JSONObject.NULL object.
      * @return this.
      */
-    public JSONArray put(Object value) {
+    @SuppressWarnings("unchecked")
+	public JSONArray put(Object value) {
         this.myArrayList.add(value);
         return this;
     }
@@ -699,7 +703,8 @@ public class JSONArray {
      * @return this.
      * @throws JSONException If the index is negative or if the the value is an invalid number.
      */
-    public JSONArray put(int index, Object value) throws JSONException {
+    @SuppressWarnings("unchecked")
+	public JSONArray put(int index, Object value) throws JSONException {
         JSONObject.testValidity(value);
         if (index < 0) {
             throw new JSONException("JSONArray[" + index + "] not found.");

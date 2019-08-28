@@ -79,6 +79,7 @@ import java.util.*;
  * @author JSON.org
  * @version 2013-04-18
  */
+@SuppressWarnings("rawtypes")
 public class JSONObject {
 
     /**
@@ -101,7 +102,7 @@ public class JSONObject {
     /**
      * The map where the JSONObject's properties are kept.
      */
-    private final Map map;
+	private final Map map;
 
     /**
      * Construct an empty JSONObject.
@@ -185,7 +186,8 @@ public class JSONObject {
      * @param map A map object that can be used to initialize the contents of the JSONObject.
      * @throws JSONException
      */
-    public JSONObject(Map map) {
+    @SuppressWarnings("unchecked")
+	public JSONObject(Map map) {
         this.map = new HashMap();
         if (map != null) {
             Iterator i = map.entrySet().iterator();
@@ -1122,7 +1124,8 @@ public class JSONObject {
         return NULL.equals(object) ? defaultValue : object.toString();
     }
 
-    private void populateMap(Object bean) {
+    @SuppressWarnings("unchecked")
+	private void populateMap(Object bean) {
         Class klass = bean.getClass();
 
 // If klass is a System class then set includeSuperClass to false.
@@ -1255,7 +1258,8 @@ public class JSONObject {
      * @return this.
      * @throws JSONException If the value is non-finite number or if the key is null.
      */
-    public JSONObject put(String key, Object value) throws JSONException {
+    @SuppressWarnings("unchecked")
+	public JSONObject put(String key, Object value) throws JSONException {
         String pooled;
         if (key == null) {
             throw new NullPointerException("Null key.");
